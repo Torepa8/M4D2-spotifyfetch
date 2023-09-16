@@ -1,4 +1,4 @@
-const searchUser=document.getElementById('searchField').value
+// const searchUser=document.getElementById('searchField').value
 const api="https://striveschool-api.herokuapp.com/api/deezer/search?q="
 
 function search() {
@@ -13,15 +13,25 @@ const searchUser=document.getElementById('searchField').value
 }
 
 function displayUserData(datiAlbum) {
-    // console.log(datiAlbum.data[0])
+    console.log(datiAlbum.data[0]) // per guardare la struttura dati resituita
 
     //nome dell'artista
     console.log(datiAlbum.data[0].artist.name)
     //picture_small
-    console.log(datiAlbum.data[0].artist.picture_small)
+    console.log(datiAlbum.data[0].artist.picture)
     //titolo album
     console.log(datiAlbum.data[0].album.title)
-    document.querySelector('#prova').innerHTML=datiAlbum.data[0].artist.name
+    //carico nome artista su dom
+    let titolo=document.getElementById('titolotrovato')
+    let cover_album=document.getElementById('covertrovata')
+    titolo.innerHTML=datiAlbum.data[0].artist.name
+    cover_album.src=datiAlbum.data[0].artist.picture
+    console.log(titolo)
+    let card=document.getElementById('card_all_element')
+    card.classList.add('d-flex')
+    // let vis_ricerca=document.querySelector('#found div')
+    // vis_ricerca.appendChild(titolo)
+    // vis_ricerca.appendChild(cover_album)
 
     // document.querySelector("#full-name").innerText = `${person.name.title} ${person.name.first} ${person.name.last}`
     // document.querySelector("#avatar").src = person.picture.large
